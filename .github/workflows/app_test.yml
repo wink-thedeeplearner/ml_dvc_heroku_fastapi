@@ -1,0 +1,41 @@
+# This workflow will install Python dependencies, configure aws creditials, and set up DVC.
+# This workflow will also run tests and lint with Python version 3.9.7.
+
+name: Python application for versioning and testing machine learning pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.9.7
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.9.7
+    - name: Install dependencies
+      run: | 
+        python -m pip install --upgrade pip
+        pip install flake8 pytest
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+    - name: Setup DVC
+      uses: iterative/setup-dvc@v1
+    - name: Pull data from DVC
+      run: dvc pull
+    - name: Run Flake8
+      run: flake8
+    - name: Run pytest
+      run: pytest -s

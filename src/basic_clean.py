@@ -1,12 +1,12 @@
 """
-Basic cleaning step
+ML step: basic cleaning
 """
 import pandas as pd
 
 
 def __clean_dataset(df):
     """
-    Clean the dataset doing some stuff got from eda
+    preprocess the raw data after data exploration
     """
     df.replace({'?': None}, inplace=True)
     df.dropna(inplace=True)

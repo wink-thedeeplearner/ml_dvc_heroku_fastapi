@@ -3,8 +3,8 @@ ML Pipeline
 """
 import argparse
 import src.basic_clean
-#import src.train_test_model
-#import src.check_score
+import src.model_functions
+import src.check_slice_performance
 import logging
 
 '''
@@ -26,13 +26,13 @@ def execute(args):
         logging.info("Basic cleaning has begun")
         src.basic_clean.execute_basic_cleaning()
 
-    if args.mlstep == "all" or args.mlstep == "train_test_model":
+    if args.mlstep == "all" or args.mlstep == "model_functions":
         logging.info("Train/Test model has begun")
-        src.train_test_model.train_test_model()
+        src.model_functions.train_test_model()
 
-    if args.mlstep == "all" or args.mlstep == "eval_metrics":
-        logging.info("Eval metrics has begun")
-        src.eval_metrics.eval_metrics()
+    if args.mlstep == "all" or args.mlstep == "slice_performance":
+        logging.info("Checking model's performance on slices has begun")
+        src.check_slice_performance.check_slice_performance()
 
 
 if __name__ == "__main__":
@@ -45,11 +45,11 @@ if __name__ == "__main__":
         "--mlstep",
         type=str,
         choices=["basic_clean",
-                 "train_test_model",
-                 "eval_metrics",
+                 "model_functions",
+                 "slice_performance",
                  "all"],
         default="all",
-        help="ML pipeline steps: basic_clean, train_test_model, eval_metrics, all"
+        help="ML pipeline steps: basic_clean, train_test_model, slice_performance, all"
     )
 
     main_args = parser.parse_args()

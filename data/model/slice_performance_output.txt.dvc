@@ -1,0 +1,4 @@
+outs:
+- md5: e48c0d50f1780755f04b2b7663ee19cf
+  size: 8389
+  path: slice_performance_output.txt

@@ -15,6 +15,7 @@ from sklearn.model_selection import train_test_split
 from joblib import dump
 import src.features
 
+
 def feature_engineering(
     X, categorical_features=[], label=None, training=True, encoder=None,
     lb=None
@@ -83,6 +84,7 @@ def feature_engineering(
     X = np.concatenate([X_continuous, X_categorical], axis=1)
     return X, y, encoder, lb
 
+
 def train_test_model():
     """
     Execute model training
@@ -99,6 +101,7 @@ def train_test_model():
     dump(trained_model, "data/model/model.joblib")
     dump(encoder, "data/model/encoder.joblib")
     dump(lb, "data/model/lb.joblib")
+
 
 def cv_model(X_train, y_train):
     """

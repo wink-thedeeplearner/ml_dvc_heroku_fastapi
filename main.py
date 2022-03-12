@@ -16,6 +16,7 @@ Define different steps necessary for model training and testing
 - eval metrics
 '''
 
+
 def execute(args):
     """
     Execute the pipeline
@@ -49,7 +50,7 @@ if __name__ == "__main__":
                  "slice_performance",
                  "all"],
         default="all",
-        help="ML pipeline steps: basic_clean, train_test_model, slice_performance, all"
+        help="ML pipeline steps"
     )
 
     main_args = parser.parse_args()

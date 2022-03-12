@@ -34,7 +34,7 @@ def check_slice_performance():
             y_preds = trained_model.predict(X_test)
 
             prc, rcl, fb = src.model_functions.compute_model_metrics(y_test,
-                                                                      y_preds)
+                                                                     y_preds)
 
             line = "[%s->%s] Precision: %s " \
                    "Recall: %s FBeta: %s" % (cat, cls, prc, rcl, fb)

@@ -13,7 +13,7 @@ from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.preprocessing import LabelBinarizer, OneHotEncoder
 from sklearn.model_selection import train_test_split
 from joblib import dump
-import src.features
+import features
 
 
 def feature_engineering(
@@ -93,7 +93,7 @@ def train_test_model():
     train, _ = train_test_split(df, test_size=0.20)
 
     X_train, y_train, encoder, lb = feature_engineering(
-        train, categorical_features=src.features.get_cat_features(),
+        train, categorical_features=features.get_cat_features(),
         label="salary", training=True
     )
     trained_model = cv_model(X_train, y_train)

@@ -1,7 +1,7 @@
 import setuptools
 
 setuptools.setup(
-    name="ml-heroku-fastapi",
+    name="mlfastapi",
     version="0.0.1",
     description="ML Heroku deployment with FastAPI.",
     author="Khai Win",

@@ -13,7 +13,7 @@ from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.preprocessing import LabelBinarizer, OneHotEncoder
 from sklearn.model_selection import train_test_split
 from joblib import dump
-import features
+import src.features as features
 
 
 def feature_engineering(
